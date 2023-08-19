@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" 
+ xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c" 
+ xmlns:context="http://www.springframework.org/schema/context" 
+ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+ http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-4.0.xsd" 
+
+ >
+ 
+ 	<bean id="emp1" class="com.met.model.Employee"></bean>
+ 	<!-- Employee emp1 = new Employee() -->
+ 	
+ 	<bean id="emp2" class="com.met.model.Employee"></bean>
+ 	<!-- Employee emp2 = new Employee() -->
+ 
+ 	<bean id="emp3" class="com.met.model.Employee" scope="prototype"></bean>		
+ 
+ 
+ 	<bean id="emp4" class="com.met.model.Employee">
+ 		<constructor-arg name="name" value="Ajay"></constructor-arg>
+ 		<constructor-arg name="age" value="22"></constructor-arg>
+ 	</bean>
+ 	
+ 	 	
+ 	<bean id="emp5" class="com.met.model.Employee">
+ 		<constructor-arg index="0" value="Ramesh"></constructor-arg>
+ 		<constructor-arg index="1" value="24"></constructor-arg>
+ 	</bean> 	
+ 	
+ 	<!-- Employee emp5 = new Employee("Ramesh", 24); -->
+ 	 	
+ 	
+ 	<bean id="emp6" class="com.met.model.Employee">
+		<property name="name" value="Jill"></property>
+		<property name="age" value="25"></property>
+		<property name="salary" value="65000"></property>
+		<property name="designation" value="S.E"></property> 		
+ 	</bean>
+ 	 	
+ 	 <bean id="emp7" class="com.met.model.Employee">
+		<constructor-arg name="name" value="june"></constructor-arg>
+ 		<constructor-arg name="age" value="23"></constructor-arg>
+		<property name="salary" value="75000"></property>
+		<property name="designation" value="S.S.E"></property> 		
+ 	</bean>
+ 	<!-- Employee emp7=new Employee("june",23);
+ 	emp7.setSalary(75000);
+ 	emp7.setDesignation(S.S.E); -->
+ 
+ <!-- i want do not create object during initilised then writr lazy-init="true" -->
+ 	<bean id="emp8" class="com.met.model.Employee" lazy-init="true">
+ 		<constructor-arg name="name" value="Mane"></constructor-arg>
+ 		<constructor-arg name="age" value="21"></constructor-arg>
+ 	</bean>
+ 	
+ 	<bean id="address1" class="com.met.model.Address">
+		<property name="city" value="london"></property>
+		<property name="country" value="england"></property>		
+ 	</bean>
+ 	
+ 	<bean id="emp9" class="com.met.model.Employee" lazy-init="true">
+ 		<constructor-arg name="name" value="Jim"></constructor-arg>
+ 		<constructor-arg name="age" value="20"></constructor-arg>
+ 		<constructor-arg name="salary" value="500000"></constructor-arg>
+ 		<constructor-arg name="designation" value="S.S.E"></constructor-arg>
+ 		<constructor-arg name="address" ref="address1"></constructor-arg>
+ 	</bean>
+ 	
+ 	<bean id="stage1" class="com.met.model.Stage" factory-method="getStage"></bean>
+ 	<bean id="stage2" class="com.met.model.Stage" factory-method="getStage" ></bean>
+ 	
+ 	
+ </beans>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
